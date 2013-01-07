@@ -1,0 +1,160 @@
+/* 
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;    	
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ul {
+	list-style: none;
+}
+
+#wrapper {
+    width:300px;
+    margin:auto;
+    padding-top:20px;
+    padding:20px;
+    background-color:#fafafa;
+    overflow:hidden;
+    box-shadow:0px 0px 10px #333;
+    background:url("bg1.jpg");
+}
+
+.top {
+    line-height:100px;
+
+}
+
+.main-area {
+    width:270px;
+    margin-right:10px;
+    float:left;
+}
+
+h1 {
+    font-size:24px;
+    margin-bottom:20px;
+    font-family:Georgia, serif;
+    text-transform:uppercase;
+    color: #333;
+    text-shadow: 0px 1px 1px #ccc;
+    padding:10px 25px;
+}
+
+h5 {
+    font-size:13px;
+    font-family:Georgia, serif;
+    text-transform:uppercase;
+    color: #333;
+    text-shadow: 0px 1px 1px #ccc;
+    padding:10px;
+}
+
+#calc_main {
+    width:292px;
+    border:2px solid #ccc;
+    font-family:'Arial';
+    font-size:16px;
+    height:260px;
+}
+
+#calc_btn {
+    width:250px;
+    font-family:'Arial';
+    font-size:16px;
+    height:60px;
+    margin-left:25px;
+}
+
+#calc_scrn {
+    width:230px;
+    font-family:'Arial';
+    font-size:16px;
+    height:90px;
+    margin-left:25px;
+    background-color:#f2f2f2;
+    border:2px solid #ccc;
+    padding-right:10px;
+}
+
+#num1, #num2, #ans {
+    width:130px;
+    font-family:'Arial';
+    font-size:16px;
+    height:20px;
+    float:right;    
+}
+
+#btn_digit, #btn_clear, #btn_fnc1, #btn_fnc2, #btn_fnc3, #btn_fnc4{
+    float:left;
+    margin-right:10px;
+    padding:5px 10px;
+    width:40px;
+}
+
+#btn_clear{
+    background-color:#F08080;
+}
+
+#btn_fnc1, #btn_fnc2, #btn_fnc3, #btn_fnc4{
+    background-color:#999999;
+}
+
+#task {
+    width:550px;
+    float:left;
+}
+
+.feed {
+    width:200px;
+    margin-left: 45px;
+}
+
+.feed li {
+    margin-bottom:15px;
+    padding:10px;
+    box-shadow:0px 0px 7px #AAA;
+    font-family:
+}
+
+.feed li p {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+    text-transform: normal;
+    letter-spacing: normal;
+    line-height: 1.4em;
+    color:#666;
+    
+}
+
+

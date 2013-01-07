@@ -1,0 +1,138 @@
+<!doctype html>
+
+<!--//--******************************************//
+----//--******-- nimali@wso2.com - [task1] -******// 
+----//--******************************************//-->
+
+<html>
+<head>
+	<title>NEO CALCULATOR</title>
+<!--//-------------------- css files -------------------// -->
+    	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--//****************** calculator [BEGIN] *******************// -->
+<br class="top">
+<div id="wrapper">   
+    <h1>NEO Calculator</h1>
+    <form id="task" name="task">
+	<div id="calc_main"><br>
+	     <div id="calc_scrn"><br>
+		<input type="text" id="num1" />
+		<h5>Number1</h5>
+		<input type="text" id="num2" />		
+		<h5>Number2</h5>
+	     </div><!--/end calc_scrn --><br>
+	     <div id="calc_btn">
+		<input type="button" id="btn_fnc1" value="+" onClick="return valdata(this.value);"/>	
+		<input type="button" id="btn_fnc2" value="-" onClick="return valdata(this.value);"/>   
+		<input type="button" id="btn_fnc3" value="*" onClick="return valdata(this.value);"/>
+		<input type="button" id="btn_fnc4" value="/" onClick="return valdata(this.value);"/>	    	
+	    	<input type="reset" id="btn_clear" value="C"/> 	
+	     </div><!--/end calc_btn -->
+	    <ul class="feed">
+		<% if (session.get("entries")) { 
+		   	var list = session.get("entries"); 
+	    		var input1 = list.text;
+	 		var input2 = list.text1;
+			var total= parseFloat(input1)+parseFloat(input2); 
+		 } %>
+		<li id="feed">            
+		    <p><%=total%></p>
+		</li>		
+	    </ul>
+        </div><!--/end calc_main -->
+    </form>   
+</div><!--/end wrapper -->
+<!--//****************** calculator [END] *******************// -->
+
+<!--//------------------- java script files [BEGIN] ------------// -->
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+
+function valdata(el) {
+
+	var num1=document.task.num1.value; // get NUMBER1 input value
+	var num2=document.task.num2.value; // get NUMBER2 input value
+
+	     if (num1 == "") { // blank entry for NUMBER1
+		     alert("Sorry Number1 cannot be blank");
+		     document.task.num1.focus();
+		     exit(0);
+	     }
+	     else if (num2 == "") { // blank entry for NUMBER2
+		     alert("Sorry Number2 cannot be blank");
+		     document.task.num2.focus();
+		     exit(0);
+	     }
+	     else if (isNaN(num1)) { // incorrect number format entry for NUMBER1
+                     alert("Please enter correct number format for NUMBER1");
+		     document.task.num1.select();
+		     exit(0);
+	     }
+	     else if (isNaN(num2)) { // incorrect number format entry for NUMBER2
+		     alert("Please enter correct number format for NUMBER2");
+		     document.task.num2.select();
+		     exit(0);
+	     }  
+
+	if (el=='+') { // when press the '+' button
+	      	var textNew = encodeURI(document.task.num1.value);
+		var textNew1 = encodeURI(document.task.num2.value);
+        		$.get("result.jag", { text: textNew, text1: textNew1, action: "plus" },
+   		function(data){
+        		$(data).hide().prependTo(".feed").fadeIn("slow");
+        		$("#feed").hide();
+		
+			$("#num1").val(""); // reset NUMBER1 
+			$("#num2").val(""); // reset NUMBER2 
+   		});			
+	}
+	else if (el=='-') { // when press the '-' button
+	      	var textNew = encodeURI(document.task.num1.value);
+		var textNew1 = encodeURI(document.task.num2.value);
+        		$.get("result.jag", { text: textNew, text1: textNew1, action: "minus" },
+   		function(data){
+        		$(data).hide().prependTo(".feed").fadeIn("slow");
+        		$("#feed").hide();
+		
+			$("#num1").val(""); // reset NUMBER1 
+			$("#num2").val(""); // reset NUMBER2 
+   		});			
+	}
+	else if (el=='*') { // when press the '*' button
+	      	var textNew = encodeURI(document.task.num1.value);
+		var textNew1 = encodeURI(document.task.num2.value);
+        		$.get("result.jag", { text: textNew, text1: textNew1, action: "mul" },
+   		function(data){
+        		$(data).hide().prependTo(".feed").fadeIn("slow");
+        		$("#feed").hide();
+		
+			$("#num1").val(""); // reset NUMBER1 
+			$("#num2").val(""); // reset NUMBER2 
+   		});			
+	}
+	else if (el=='/') { // when press the '/' button
+ 	     if (num2 == "0") { // blank entry for NUMBER2
+		     alert("Sorry Number2 cannot be '0'");
+		     document.task.num2.select();
+		     exit(0);
+	     }
+
+	      	var textNew = encodeURI(document.task.num1.value);
+		var textNew1 = encodeURI(document.task.num2.value);
+        		$.get("result.jag", { text: textNew, text1: textNew1, action: "div" },
+   		function(data){
+        		$(data).hide().prependTo(".feed").fadeIn("slow");
+        		$("#feed").hide();
+		
+			$("#num1").val(""); // reset NUMBER1 
+			$("#num2").val(""); // reset NUMBER2 
+   		});			
+	}
+	$("#rst").hide(); 
+}
+</script>
+<!--//------------------- java script files [END] ------------// -->
+</body>
+</html>

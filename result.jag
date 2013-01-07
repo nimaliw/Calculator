@@ -1,0 +1,37 @@
+<%
+	var text = request.getParameter("text")
+	var text1 = request.getParameter("text1");
+	
+        var entry = {
+        	text : text,
+		text1 : text1
+        };
+  	
+  	if (session.get("entries")) {
+        	var entries = session.get("entries");
+        	entries.unshift(entry);
+
+        } else {
+            	var entries = new Array();
+            	entries[0] = entry;
+        };
+        
+       	session.put("entries",entries);
+
+	if  (request.getParameter("action")== "plus") {
+		var total = parseFloat(entry.text) + parseFloat(entry.text1);
+		print("<li id='rst'><p>"+entry.text+" + "+entry.text1+" = "+total+"</p></li>"); 
+	}
+	if  (request.getParameter("action")== "minus") {
+		var total = parseFloat(entry.text) - parseFloat(entry.text1);
+		print("<li id='rst'><p>"+entry.text+" - "+entry.text1+" = "+total+"</p></li>"); 
+	}
+	if  (request.getParameter("action")== "mul") {
+		var total = parseFloat(entry.text) * parseFloat(entry.text1);
+		print("<li id='rst'><p>"+entry.text+" * "+entry.text1+" = "+total+"</p></li>"); 
+	}
+	if  (request.getParameter("action")== "div") {
+		var total = parseFloat(entry.text) / parseFloat(entry.text1);
+		print("<li id='rst'><p>"+entry.text+" / "+entry.text1+" = "+total+"</p></li>"); 
+	}
+%>
